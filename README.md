@@ -20,7 +20,9 @@
 src/
  ├── components/         # Componentes reutilizables de la UI
  │    ├── Header.js      # Encabezado de la tienda
+      ├── Navbar.js      # Navbar para acceder al carrito
  │    └── CardItem.js    # Tarjetas para mostrar productos/personajes
+ ├── features/           # Cada una de las vistas ofrecidas (Home, Vista de Producto)
  ├── App.js              # Componente principal de la app
  └── index.js            # Punto de entrada
 ```
@@ -33,7 +35,7 @@ src/
 npm install
 ```
 
-- 3) Iniciar la aplicación en desarrollo, se ejecutará en http://localhost:3000. 
+- 3) Iniciar la aplicación, se ejecutará en http://localhost:3000: 
 
 ```plaintext
 npm start
