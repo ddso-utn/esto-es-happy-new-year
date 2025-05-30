@@ -9,7 +9,7 @@
 
 - [React 19](https://reactjs.org/)
 - [Create React App](https://create-react-app.dev/)
-- [Reactstrap](https://reactstrap.github.io/) – Componentes reutilizables basados en Bootstrap
+- [React-Bootstrap](https://react-bootstrap.netlify.app/docs/getting-started/introduction) – Componentes reutilizables basados en Bootstrap
 - [Bootstrap 5](https://getbootstrap.com/) – Estilos base
 
 ---
