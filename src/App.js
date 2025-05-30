@@ -1,4 +1,3 @@
-import './App.css';
 import Home from './features/home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
