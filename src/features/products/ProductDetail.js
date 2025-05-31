@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { products } from "../../mockData/products";
 
-const Product = () => {
+const ProductDetailPage = () => {
   const { title } = useParams();
   const product = products.find(p => p.title.toLowerCase() === title.toLowerCase());
 
@@ -16,4 +16,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductDetailPage;

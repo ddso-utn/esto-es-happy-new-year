@@ -8,8 +8,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 90%;      /* Set your desired max width */
-  margin: 0 auto;         /* Center the navbar content */
+  max-width: 90%;     
+  margin: 0 auto;        
   box-sizing: border-box;
   width: 100%;
   font-family: sans-serif;
@@ -46,7 +46,7 @@
 }
 
 .search-bar input {
-  padding: 0.5rem 2.2rem 0.5rem 1rem; /* espacio a la derecha para el botón */
+  padding: 0.5rem 2.2rem 0.5rem 1rem; 
   border: 1px solid #ccc;
   border-radius: 2rem;
   outline: none;
@@ -72,7 +72,7 @@
   justify-content: center;
 }
 
-.brand-text {
+.brand-title {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;

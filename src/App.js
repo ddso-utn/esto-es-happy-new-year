@@ -1,17 +1,17 @@
-import Home from './features/home/Home';
+import HomePage from './features/home/HomePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router';
-import Product from './features/products/Product';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './features/layout/Layout';
+import ProductDetailPage from './features/products/ProductDetail';
 
 function App() {
   return (
       <BrowserRouter>
       <Routes>
       <Route path="/" element={<Layout  />} >
-        <Route index element={<Home />} />
-        <Route path="/productos/:title" element={<Product />} />
+        <Route index element={<HomePage />} />
+        <Route path="/products/:title" element={<ProductDetailPage />} />
       </Route>
       </Routes>
     </BrowserRouter>
