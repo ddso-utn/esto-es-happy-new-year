@@ -5,7 +5,7 @@ import Navbar from "../../components/navbar/Navbar";
 const Layout = () => {
     return(
         <>
-          <Header></Header>
+          <Header username="Alumno/a de DDSO"></Header>
           <Navbar></Navbar>
           <Outlet />
 
