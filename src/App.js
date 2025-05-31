@@ -3,14 +3,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router';
 import Product from './features/products/Product';
 import { Routes, Route } from 'react-router-dom';
+import Layout from './features/layout/Layout';
 
 function App() {
   return (
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+      <Route path="/" element={<Layout />} >
+        <Route index element={<Home />} />
         <Route path="/:title" element={<Product />} />
-        {/* Agrega más rutas aquí */}
+      </Route>
       </Routes>
     </BrowserRouter>
   );
