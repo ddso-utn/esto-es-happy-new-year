@@ -42,10 +42,7 @@ const Home = () => {
   const [platos, setPlatos] = useState([])
 
   useEffect(() => {
-    const obtenerPlatos = async () => {
-      const platosDeLaAPI = await getPlatos()
-      setPlatos(platosDeLaAPI)
-    }
+    const obtenerPlatos = async () => setPlatos(await getPlatos())
     obtenerPlatos()
   }, [])
 
