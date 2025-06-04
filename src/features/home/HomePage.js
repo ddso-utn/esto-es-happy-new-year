@@ -42,8 +42,8 @@ const Home = () => {
   const [platos, setPlatos] = useState([])
 
   useEffect(() => {
-    const obtenerPlatos = async () => setPlatos(await getPlatos())
-    obtenerPlatos()
+    const cargarPlatos = async () => setPlatos(await getPlatos())
+    cargarPlatos()
   }, [])
 
   const platosSeleccionados = () =>
