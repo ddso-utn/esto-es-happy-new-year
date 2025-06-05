@@ -4,15 +4,13 @@ import {Button, TextField} from "@mui/material";
 import {useState} from "react";
 import { products } from '../../mockData/products';
 
-let productosFiltrados = products
-
-const filtrarProductos = (searchText) => {
-  productosFiltrados = products.filter(product => product.title.startsWith(searchText))
-  console.log(productosFiltrados)
-}
-
 const Home = () => {
   const [searchText, setSearchText] = useState("");
+  const [products, setProducts] = useState(products);
+
+  const filtrarProductos = (searchText) => {
+    setProducts(products.filter(product => product.title.startsWith(searchText)))
+  }
 
   return (
     <div className="root">
