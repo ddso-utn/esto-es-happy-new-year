@@ -1,16 +1,25 @@
 import Carousel from "../../components/carousel/Carousel";
 import './Home.css'
 import {Button, TextField} from "@mui/material";
-import {useState} from "react";
-import { products as allProducts } from '../../mockData/products';
+import {useEffect, useState} from "react";
+import {getProducts, getProductsSlowly} from "../../api/api";
+import {Spinner} from "react-bootstrap";
 
 const Home = () => {
   const [searchText, setSearchText] = useState("");
-  const [products, setProducts] = useState(allProducts);
+  const [products, setProducts] = useState([]);
 
   const filtrarProductos = (searchText) => {
-    setProducts(allProducts.filter(product => product.title.startsWith(searchText)))
+    setProducts(products.filter(product => product.title.startsWith(searchText)))
   }
+
+  const cargarProductos = async () => {
+    setProducts(await getProductsSlowly())
+  }
+
+  useEffect(() => {
+    cargarProductos()
+  }, [])
 
   return (
     <div className="root">
@@ -28,7 +37,11 @@ const Home = () => {
       />
         <Button variant="contained" onClick={() => filtrarProductos(searchText)}>Buscar</Button>
       </div>
-      <Carousel products={products} />
+      {!products.length? <div className="spinner">
+        <Spinner/>
+      </div> :
+        <Carousel products={products} />
+      }
     </div>
   )
 };
