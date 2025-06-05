@@ -1,8 +1,27 @@
 .root {
   display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
   align-items: center;
-  padding: 40px;
+  padding: 60px;
   background: rgb(232, 234, 238);
+
+  > .title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 40px;
+
+    span {
+      font-size: 12px;
+    }
+
+    h1 {
+      font-size: 50px;
+      font-weight: bold;
+      margin-: 0;
+      font-family: "Fleur De Leah", cursive;
+    }
+  }
 }
