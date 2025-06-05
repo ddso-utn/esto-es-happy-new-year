@@ -25,3 +25,17 @@
     }
   }
 }
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  background: #fff;
+  border-radius: 4px;
+  width: 100%;
+
+  > button {
+    margin-left: 20px;
+  }
+}
