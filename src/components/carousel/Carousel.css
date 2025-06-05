@@ -1,16 +1,11 @@
-.root {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  padding: 40px;
-  background: rgb(232, 234, 238);
-}
-
 .carousel{
   display: flex;
   overflow-x: auto;
   width: 100%;
   padding: 10px;
   gap: 16px;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
 }
