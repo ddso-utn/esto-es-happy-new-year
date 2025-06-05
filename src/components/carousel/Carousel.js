@@ -1,8 +1,7 @@
 import './Carousel.css';
-import { products } from '../../mockData/products';
 import ProductItem from '../products/ProductItem';
 
-const Carousel = () => {
+const Carousel = ({products}) => {
     return (
           <div className="carousel">
               {products.map((product) =>

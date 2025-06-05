@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb0bfb56-6db8-4317-83d1-ad3f5d260cab" name="Changes" comment="" />
+    <list default="true" id="bb0bfb56-6db8-4317-83d1-ad3f5d260cab" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/components/carousel/Carousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/carousel/Carousel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/home/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/home/HomePage.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +17,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -24,6 +28,9 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2y0M2dmg6itGgJZ47HNqyGiNSGy" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -31,9 +38,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "komm-3",
+    "git-widget-placeholder": "clase-2-searchbar-local",
     "js.last.introduce.type": "CONST",
-    "last_opened_file_path": "/Users/rodolfocaputo/Repositories/DDS/esto-es-happy-new-year",
+    "last_opened_file_path": "/Users/rodolfocaputo/Repositories/DDS/esto-es-happy-new-year/src/features/home",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -67,6 +75,7 @@
       <workItem from="1748966832302" duration="7670000" />
       <workItem from="1748995308576" duration="9476000" />
       <workItem from="1749094556429" duration="1362000" />
+      <workItem from="1749140286639" duration="9329000" />
     </task>
     <servers />
   </component>
