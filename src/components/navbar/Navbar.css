@@ -4,6 +4,13 @@
   border-bottom: 1px solid #ccc;
 }
 
+.app-nav {
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: row ;
+  justify-content: space-between;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -36,7 +43,7 @@
   margin-top: 0.3rem;
 }
 .right {
-  gap: rem;
+  gap: 1rem;
 }
 
 .search-bar {
@@ -72,9 +79,12 @@
   justify-content: center;
 }
 
-.brand-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
+.brand-text{
+  font-family: "Trade Winds", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
 
+.cart {
+  color: white
+}

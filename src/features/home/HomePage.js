@@ -1,18 +1,16 @@
 import Carousel from "../../components/carousel/Carousel";
+import {Card} from "@mui/material";
 
 const Home = () => {
 
 
-    return (
-      <>
+  return (
+    <>
+      <Carousel/>
+    </>
 
-        <Carousel/> 
-        
-      </>
-       
-        
-        
-    )
+
+  )
 };
 
 export default Home; 

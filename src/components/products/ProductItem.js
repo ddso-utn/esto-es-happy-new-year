@@ -1,14 +1,17 @@
 import "./ProductItem.css"; 
-import { Link } from "react-router-dom";   
+import { Link } from "react-router-dom";
+import {Card} from "@mui/material";
 
-const ProductItem = ({ aProduct, key }) => { 
+const ProductItem = ({ aProduct, key }) => {
 
     return (
-        <div className="product-item" key={key}>
-            <img src={aProduct.image} alt={aProduct.title} />
-            <Link to={`/products/${aProduct.title.toLowerCase()}`}><h3>{aProduct.title}</h3></Link>
-            <p>${aProduct.price}</p>
-        </div>
+        <Card className="product-item" key={key}>
+          <img src={aProduct.image} alt={aProduct.title} />
+          <div className="item-footer">
+            <h3>{aProduct.title}</h3>
+            <p>${aProduct.price.toFixed(2)}</p>
+          </div>
+        </Card>
     );
 
 };

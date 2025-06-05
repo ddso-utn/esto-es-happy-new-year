@@ -4,11 +4,13 @@ import ProductItem from '../products/ProductItem';
 
 const Carousel = () => {
     return (
-        <div className="products-carousel">
-            {products.map((product) =>
-                <ProductItem aProduct = {product} key={product.id} />
-            )}
-        </div>
+      <div className="root">
+          <div className="carousel">
+              {products.map((product) =>
+                <ProductItem aProduct={product} key={product.id}/>
+              )}
+          </div>
+      </div>
     )
 
 };
