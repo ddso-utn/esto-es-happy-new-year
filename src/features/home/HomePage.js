@@ -2,14 +2,14 @@ import Carousel from "../../components/carousel/Carousel";
 import './Home.css'
 import {Button, TextField} from "@mui/material";
 import {useState} from "react";
-import { products } from '../../mockData/products';
+import { products as allProducts } from '../../mockData/products';
 
 const Home = () => {
   const [searchText, setSearchText] = useState("");
-  const [products, setProducts] = useState(products);
+  const [products, setProducts] = useState(allProducts);
 
   const filtrarProductos = (searchText) => {
-    setProducts(products.filter(product => product.title.startsWith(searchText)))
+    setProducts(allProducts.filter(product => product.title.startsWith(searchText)))
   }
 
   return (
@@ -28,7 +28,7 @@ const Home = () => {
       />
         <Button variant="contained" onClick={() => filtrarProductos(searchText)}>Buscar</Button>
       </div>
-      <Carousel products={productosFiltrados} />
+      <Carousel products={products} />
     </div>
   )
 };
