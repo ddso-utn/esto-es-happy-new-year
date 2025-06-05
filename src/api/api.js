@@ -7,3 +7,9 @@ export const getProductsSlowly = () => new Promise((resolve) => {
     resolve(products)
   }, 5000)
 })
+
+export const searchProducts = (searchTerm) => new Promise((resolve) => {
+  setTimeout(() => {
+    resolve(products.filter(product => product.title.startsWith(searchTerm)))
+  }, 1000)
+})

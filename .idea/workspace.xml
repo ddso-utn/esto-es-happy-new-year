@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb0bfb56-6db8-4317-83d1-ad3f5d260cab" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/home/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/home/HomePage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
