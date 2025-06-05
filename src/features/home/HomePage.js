@@ -4,6 +4,13 @@ import {Button, TextField} from "@mui/material";
 import {useState} from "react";
 import { products } from '../../mockData/products';
 
+let productosFiltrados = products
+
+const filtrarProductos = (searchText) => {
+  productosFiltrados = products.filter(product => product.title.startsWith(searchText))
+  console.log(productosFiltrados)
+}
+
 const Home = () => {
   const [searchText, setSearchText] = useState("");
 
@@ -21,9 +28,9 @@ const Home = () => {
         variant="standard"
         placeholder="Buscar por nombre"
       />
-        <Button variant="contained">Buscar</Button>
+        <Button variant="contained" onClick={() => filtrarProductos(searchText)}>Buscar</Button>
       </div>
-      <Carousel products={products}/>
+      <Carousel products={productosFiltrados} />
     </div>
   )
 };
