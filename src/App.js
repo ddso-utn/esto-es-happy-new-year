@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from './features/layout/Layout';
 import ProductDetailPage from './features/products/ProductDetail';
 import {createTheme, ThemeProvider} from "@mui/material";
+import Checkout from "./features/checkout/Checkout";
 
 const theme = createTheme({
   palette: {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Layout  />} >
             <Route index element={<HomePage />} />
             <Route path="/products/:title" element={<ProductDetailPage />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Route>
         </Routes>
       </BrowserRouter>

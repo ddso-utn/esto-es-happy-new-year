@@ -4,12 +4,14 @@ import {Button, TextField} from "@mui/material";
 import {useEffect, useState} from "react";
 import {getProducts, getProductsSlowly} from "../../api/api";
 import {Spinner} from "react-bootstrap";
+import {useNavigate} from "react-router";
 
 const conCantidad = (cantidad) => (producto) => ({...producto, cantidad})
 
 const Home = () => {
   const [searchText, setSearchText] = useState("");
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     cargarProductos()
@@ -31,6 +33,11 @@ const Home = () => {
   }
 
   const productosAComprar = products.filter(p => p.cantidad > 0)
+
+  const comprar = () => {
+    alert(`Ud. va a comprar: ${productosAComprar.map(p => p.title).join(', ')}`)
+    navigate("/checkout")
+  }
 
   return (
     <div className="root">
@@ -54,7 +61,7 @@ const Home = () => {
         <Carousel products={products} setCantidadProducto={setCantidadProducto}/>
       }
       <div className="actions">
-        <Button disabled={!productosAComprar.length} variant="contained">Comprar</Button>
+        <Button disabled={!productosAComprar.length} variant="contained" onClick={comprar}>Comprar</Button>
       </div>
     </div>
   )
