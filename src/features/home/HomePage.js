@@ -30,10 +30,7 @@ const Home = () => {
     setProducts(products.map(conCantidad(0)))
   }
 
-  const comprar = () => {
-    const productosAComprar = products.filter(p => p.cantidad > 0)
-    alert(`Ud. va a comprar: ${productosAComprar.map(p => p.title).join(', ')}`)
-  }
+  const productosAComprar = products.filter(p => p.cantidad > 0)
 
   return (
     <div className="root">
@@ -57,7 +54,7 @@ const Home = () => {
         <Carousel products={products} setCantidadProducto={setCantidadProducto}/>
       }
       <div className="actions">
-        <Button variant="contained" onClick={comprar}>Comprar</Button>
+        <Button disabled={!productosAComprar.length} variant="contained">Comprar</Button>
       </div>
     </div>
   )
