@@ -38,34 +38,7 @@ const ListaBebidas = ({bebidas, cambiarSeleccionBebida}) => {
   }</div>
 }
 
-const Bebidas = () => {
-  const [bebidas, setBebidas] = useState([])
-
-  useEffect(() => {
-    const cargarBebidas = async () => setBebidas(await getBebidas())
-    cargarBebidas()
-  }, [])
-
-  const bebidasSeleccionados = () =>
-    bebidas.filter(p => p.seleccionado)
-
-  const agregarAComanda = async () => {
-    console.log("Agregando bebidas...", bebidasSeleccionados().map(p => p.nombre))
-    await putCommanda(bebidasSeleccionados())
-    setBebidas(bebidas.map(p => ({...p, seleccionado: false})))
-    alert("Bebidas agregados!")
-  }
-
-  const cambiarSeleccion = (bebida) => {
-    // Devuelve un bebida nuevo modificado ... como en Haskell!
-    return {...bebida, seleccionado: !bebida.seleccionado}
-  }
-
-  const cambiarSeleccionBebida = (idBebida) => setBebidas(
-    // Devuelve tmb una lista nueva modificada.
-    // Si es el bebida buscado lo devuelve modificado; si no, no.
-    bebidas.map(p => p.id === idBebida ? cambiarSeleccion(p) : p)
-  )
+const Bebidas = ({bebidas,cambiarSeleccionBebida, agregarAComanda }) => {
 
   return (
     bebidas.length === 0 ? "Cargando..." : <section className="home">

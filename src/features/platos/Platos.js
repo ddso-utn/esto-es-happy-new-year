@@ -39,44 +39,7 @@ const ListaPlatos = ({platos, cambiarSeleccionPlato, cambiarNotasPlato}) => {
   }</div>
 }
 
-const Platos = () => {
-  const [platos, setPlatos] = useState([])
-
-  useEffect(() => {
-    const cargarPlatos = async () => setPlatos(await getPlatos())
-    cargarPlatos()
-  }, [])
-
-  const platosSeleccionados = () =>
-    platos.filter(p => p.seleccionado)
-
-  const agregarAComanda = async () => {
-    console.log("Agregando platos...", platosSeleccionados().map(p => `${p.nombre} (Notas: ${p.notas})`))
-    await putCommanda(platosSeleccionados())
-    setPlatos(platos.map(p => ({...p, seleccionado: false})))
-    alert("Platos agregados!")
-  }
-
-  const cambiarSeleccion = (plato) => {
-    // Devuelve un plato nuevo modificado ... como en Haskell!
-    return {...plato, seleccionado: !plato.seleccionado}
-  }
-
-  const cambiarSeleccionPlato = (idPlato) => setPlatos(
-    // Devuelve tmb una lista nueva modificada.
-    // Si es el plato buscado lo devuelve modificado; si no, no.
-    platos.map(p => p.id === idPlato ? cambiarSeleccion(p) : p)
-  )
-
-  const cambiarNotas = (plato, notas) => {
-    // Devuelve un plato nuevo modificado ... como en Haskell!
-    return {...plato, notas}
-  }
-
-  const cambiarNotasPlato = (idPlato, notas) => setPlatos(
-    platos.map(p => p.id === idPlato ? cambiarNotas(p, notas) : p)
-  )
-
+const Platos = ({platos, cambiarSeleccionPlato, cambiarNotasPlato, agregarAComanda}) => {
   return (
     platos.length === 0 ? "Cargando..." : <section className="home">
       <div className="content">
