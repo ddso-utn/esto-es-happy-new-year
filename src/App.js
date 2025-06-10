@@ -1,17 +1,18 @@
-import HomePage from './features/home/HomePage';
+import Platos from './features/platos/Platos';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './features/layout/Layout';
 import ProductDetailPage from './features/products/ProductDetail';
+import Bebidas from "./features/bebidas/bebidas";
 
 function App() {
   return (
       <BrowserRouter>
       <Routes>
       <Route path="/" element={<Layout  />} >
-        <Route index element={<HomePage />} />
-        <Route path="/products/:title" element={<ProductDetailPage />} />
+        <Route path="/platos" element={<Platos />} />
+        <Route path="/bebidas" element={<Bebidas />} />
       </Route>
       </Routes>
     </BrowserRouter>
