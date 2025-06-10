@@ -1,7 +1,10 @@
 import "./bebidas.css"
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {getBebidas, putCommanda} from "../../mockData/api";
 import {useNavigate} from "react-router";
+import {PlatosContext} from "../../context/platosProvider";
+import {BebidasContext} from "../../context/bebidasProvider";
+import {ComandaContext} from "../../context/comandaProvider";
 
 
 const Titulo = ({texto}) => {
@@ -39,7 +42,9 @@ const ListaBebidas = ({bebidas, cambiarSeleccionBebida}) => {
   }</div>
 }
 
-const Bebidas = ({todasLasBebidas, alAgregarAComanda})=> {
+const Bebidas = ()=> {
+  const {bebidas: todasLasBebidas} = useContext(BebidasContext);
+  const {agregarBebidasAComanda : alAgregarAComanda} = useContext(ComandaContext);
   const [bebidas, setBebidas] = useState(todasLasBebidas)
   const navigate = useNavigate();
 

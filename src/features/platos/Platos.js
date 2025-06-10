@@ -1,7 +1,9 @@
 import "./platos.css"
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {getPlatos, putCommanda} from "../../mockData/api";
 import {useNavigate} from "react-router";
+import {PlatosContext} from "../../context/platosProvider";
+import {ComandaContext} from "../../context/comandaProvider";
 
 
 export const Titulo = ({texto}) => {
@@ -40,7 +42,9 @@ const ListaPlatos = ({platos, cambiarSeleccionPlato, cambiarNotasPlato}) => {
   }</div>
 }
 
-const Platos = ({todosLosPlatos, alAgregarAComanda, banner, error}) => {
+const Platos = () => {
+  const {platos: todosLosPlatos, banner, error} = useContext(PlatosContext);
+  const {agregarPlatosAComanda: alAgregarAComanda} = useContext(ComandaContext);
   const [platos, setPlatos] = useState(todosLosPlatos)
   const navigate = useNavigate();
 
