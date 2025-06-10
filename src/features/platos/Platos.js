@@ -1,6 +1,6 @@
 import "./platos.css"
 import {useContext, useEffect, useState} from "react";
-import {getPlatos, putCommanda} from "../../mockData/api";
+import {getPlatos, putCommanda} from "../../api/api";
 import {useNavigate} from "react-router";
 import {PlatosContext} from "../../context/platosProvider";
 import {ComandaContext} from "../../context/comandaProvider";

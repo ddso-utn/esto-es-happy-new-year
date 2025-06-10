@@ -7,7 +7,7 @@ import ProductDetailPage from './features/products/ProductDetail';
 import Bebidas from "./features/bebidas/bebidas";
 import {Comanda} from "./features/pedido/comanda";
 import {createContext, useEffect, useState} from "react";
-import {getBebidas, getPlatos, putCommanda} from "./mockData/api";
+import {getBebidas, getPlatos, putCommanda} from "./api/api";
 import axios from "axios";
 import {PlatosProvider} from "./context/platosProvider";
 import {AppRoutes} from "./routes";

@@ -1,6 +1,6 @@
 import {createContext, useEffect, useState} from "react";
 import axios from "axios";
-import {getBebidas} from "../mockData/api";
+import {getBebidas} from "../api/api";
 
 export const BebidasContext = createContext()
 

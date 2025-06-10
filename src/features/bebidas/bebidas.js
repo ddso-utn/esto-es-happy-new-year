@@ -1,6 +1,6 @@
 import "./bebidas.css"
 import {useContext, useEffect, useState} from "react";
-import {getBebidas, putCommanda} from "../../mockData/api";
+import {getBebidas, putCommanda} from "../../api/api";
 import {useNavigate} from "react-router";
 import {PlatosContext} from "../../context/platosProvider";
 import {BebidasContext} from "../../context/bebidasProvider";
