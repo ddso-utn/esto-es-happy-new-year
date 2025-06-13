@@ -1,6 +1,7 @@
 import './Checkout.css'
 import {Button, Card, TextField} from "@mui/material";
 import {useState} from "react";
+import { useNavigate } from 'react-router';
 
 const inicializarCampo = (requerido = true) => ({
   valor: "",
@@ -17,6 +18,7 @@ const inicializarCampos = () => ({
 })
 
 const Checkout = () => {
+  const navigate = useNavigate(); 
   const [campos, setCampos] = useState(inicializarCampos())
 
   const valorDe = (nombreCampo) => campos[nombreCampo].valor
@@ -77,7 +79,7 @@ const Checkout = () => {
             label="Repetir Email"
           />
           <div className="actions">
-            <Button variant="outlined" onClick={() =>{}}>Cancelar</Button>
+            <Button variant="outlined" onClick={() =>navigate(-1)}>Cancelar</Button>
             <Button disabled={!camposCompletos} variant="contained" onClick={() =>{}}>Guardar</Button>
           </div>
         </form>

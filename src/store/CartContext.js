@@ -8,6 +8,8 @@ export const CartDrawerProvider = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [wishedProducts, setWishedProducts] = useState([]);
 
+  console.log(wishedProducts); 
+
   const showCart = () => {
     setOpen(true);
   }

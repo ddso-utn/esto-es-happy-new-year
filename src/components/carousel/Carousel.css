@@ -9,3 +9,27 @@
 .carousel::-webkit-scrollbar {
   display: none;
 }
+
+.carousel-arrow {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
+  padding: 0 1rem;
+  transition: color 0.2s;
+}
+
+.carousel-arrow:disabled {
+  color: #ccc;
+  cursor: default;
+}
+
+.carousel-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;         /* Reduce el espacio entre elementos */
+  margin-top: 0.5rem;  /* Reduce el margen superior */
+  font-size: 1rem;
+}

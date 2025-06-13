@@ -11,7 +11,9 @@ const Home = () => {
   const [searchText, setSearchText] = useState("");
   const {wishedProducts, addProducts, filterProducts} = useCartDrawerContext();
   useEffect(() => {
-    cargarProductos()
+    if(!wishedProducts.length) {
+      cargarProductos()
+    }
   }, [])
 
 
