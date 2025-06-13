@@ -9,15 +9,15 @@ import { useCartDrawerContext } from "../../store/CartContext";
 
 const Home = () => {
   const [searchText, setSearchText] = useState("");
-  const {allProducts, addProducts} = useCartDrawerContext();
+  const {wishedProducts, addProducts, filterProducts} = useCartDrawerContext();
   useEffect(() => {
     cargarProductos()
   }, [])
 
 
   const filtrarProductos = (searchText) => {
-    addProducts(allProducts.filter(product => product.title.startsWith(searchText)))
-  }
+    filterProducts(searchText);
+    }
 
   const cargarProductos = async () => {
     const products = await getProductsSlowly();
@@ -41,7 +41,7 @@ const Home = () => {
         />
         <Button variant="outlined" onClick={() => filtrarProductos(searchText)}>Buscar</Button>
       </div>
-      {!allProducts.length ? <div className="spinner">
+      {!wishedProducts.length ? <div className="spinner">
           <Spinner/>
         </div> :
         <Carousel/>

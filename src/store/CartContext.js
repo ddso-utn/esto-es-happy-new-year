@@ -7,7 +7,6 @@ export const useCartDrawerContext = () => useContext(CartDrawerContext);
 export const CartDrawerProvider = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [wishedProducts, setWishedProducts] = useState([]);
-  const [allProducts, setAllProducts] = useState([]);
 
   const showCart = () => {
     setOpen(true);
@@ -31,12 +30,16 @@ export const CartDrawerProvider = ({ children }) => {
     
     const productsWithQty = products.map(p => ({ ...p, cantidad: 0 }));
 
-    setAllProducts(products);
     setWishedProducts(productsWithQty);
   }
 
+  const filterProducts = (searchText) => {
+    const filtered = wishedProducts.filter(product => product.title.toLowerCase().includes(searchText.toLowerCase()));
+    setWishedProducts(filtered);
+  }
+
   return (
-    <CartDrawerContext.Provider value={{ open, showCart, hideCart, wishedProducts, addProductWithAmount, allProducts, addProducts }}>
+    <CartDrawerContext.Provider value={{ open, showCart, hideCart, wishedProducts, addProductWithAmount, addProducts, filterProducts}}>
       {children}
     </CartDrawerContext.Provider>
   );
