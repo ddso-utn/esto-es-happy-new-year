@@ -1,11 +1,12 @@
 import HomePage from './features/home/HomePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './features/layout/Layout';
 import ProductDetailPage from './features/products/ProductDetail';
 import {createTheme, ThemeProvider} from "@mui/material";
 import Checkout from "./features/checkout/Checkout";
+import { CartDrawerProvider } from './store/CartContext';
 
 const theme = createTheme({
   palette: {
@@ -18,6 +19,7 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
+    <CartDrawerProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout  />} >
@@ -27,6 +29,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+    </CartDrawerProvider>
     </ThemeProvider>
 
   );

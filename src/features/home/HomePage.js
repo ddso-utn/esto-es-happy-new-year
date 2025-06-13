@@ -2,42 +2,28 @@ import Carousel from "../../components/carousel/Carousel";
 import './Home.css'
 import {Button, TextField} from "@mui/material";
 import {useEffect, useState} from "react";
-import {getProducts, getProductsSlowly} from "../../api/api";
+import { getProductsSlowly} from "../../api/api";
 import {Spinner} from "react-bootstrap";
-import {useNavigate} from "react-router";
-
-const conCantidad = (cantidad) => (producto) => ({...producto, cantidad})
+import ShoppingCartDrawer from "../../components/cartDrawer/ShoppingCartDrawer";
+import { useCartDrawerContext } from "../../store/CartContext";
 
 const Home = () => {
   const [searchText, setSearchText] = useState("");
-  const [products, setProducts] = useState([]);
-  const navigate = useNavigate();
-
+  const {allProducts, addProducts} = useCartDrawerContext();
   useEffect(() => {
     cargarProductos()
   }, [])
 
-  const setCantidadProducto = (producto, cantidad) => {
-    setProducts(products.map((p) =>
-      p.id === producto.id ? conCantidad(cantidad)(p) : p
-    ));
-  }
 
   const filtrarProductos = (searchText) => {
-    setProducts(products.filter(product => product.title.startsWith(searchText)))
+    addProducts(allProducts.filter(product => product.title.startsWith(searchText)))
   }
 
   const cargarProductos = async () => {
     const products = await getProductsSlowly();
-    setProducts(products.map(conCantidad(0)))
+    addProducts(products); 
   }
 
-  const productosAComprar = products.filter(p => p.cantidad > 0)
-
-  const comprar = () => {
-    alert(`Ud. va a comprar: ${productosAComprar.map(p => p.title).join(', ')}`)
-    navigate("/checkout")
-  }
 
   return (
     <div className="root">
@@ -55,14 +41,13 @@ const Home = () => {
         />
         <Button variant="outlined" onClick={() => filtrarProductos(searchText)}>Buscar</Button>
       </div>
-      {!products.length ? <div className="spinner">
+      {!allProducts.length ? <div className="spinner">
           <Spinner/>
         </div> :
-        <Carousel products={products} setCantidadProducto={setCantidadProducto}/>
+        <Carousel/>
+        
       }
-      <div className="actions">
-        <Button disabled={!productosAComprar.length} variant="contained" onClick={comprar}>Comprar</Button>
-      </div>
+     <ShoppingCartDrawer></ShoppingCartDrawer>
     </div>
   )
 };

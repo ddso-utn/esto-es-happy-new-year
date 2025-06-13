@@ -2,11 +2,12 @@ import './Navbar.css';
 import {AppBar} from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
+import { useCartDrawerContext } from '../../store/CartContext';
 const Navbar = () => {
 
+    const { showCart } = useCartDrawerContext();
 
-
-  return <AppBar position="static">
+return <AppBar position="static">
     <div className="app-nav">
 
       <div className="navbar-section">
@@ -16,7 +17,7 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-section">
-        <button className="cart">
+        <button className="cart" onClick={showCart}>
           <ShoppingCartIcon />
         </button>
       </div>

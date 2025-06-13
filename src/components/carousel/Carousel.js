@@ -1,15 +1,18 @@
 import './Carousel.css';
 import ProductItem from '../products/ProductItem';
+import { useCartDrawerContext } from '../../store/CartContext';
 
-const Carousel = ({products, setCantidadProducto}) => {
+const Carousel = () => {
+
+    const { wishedProducts} = useCartDrawerContext(); 
 
     return (
           <div className="carousel">
-              {products.map((product) =>
+              {wishedProducts.map((product) =>
                 <ProductItem
                   aProduct={product}
                   key={product.id}
-                  setCantidad={(cantidad) => setCantidadProducto(product, cantidad)}/>
+                  />
               )}
           </div>
     )

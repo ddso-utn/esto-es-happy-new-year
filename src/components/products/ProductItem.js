@@ -1,16 +1,17 @@
+import { useCartDrawerContext } from "../../store/CartContext";
 import "./ProductItem.css"; 
-import { Link } from "react-router-dom";
 import {Button, ButtonGroup, Card} from "@mui/material";
-import {useState} from "react";
 
-const ProductItem = ({ aProduct, setCantidad }) => {
+const ProductItem = ({ aProduct }) => {
+
+  const {addProductWithAmount} = useCartDrawerContext(); 
 
   const decrementar = () => {
-    setCantidad(Math.max(0,aProduct.cantidad - 1));
+    addProductWithAmount(aProduct, -1);
   }
 
   const incrementar = () => {
-    setCantidad(aProduct.cantidad + 1);
+    addProductWithAmount(aProduct, 1);
   }
 
     return (
