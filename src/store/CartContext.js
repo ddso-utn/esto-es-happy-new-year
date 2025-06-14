@@ -8,8 +8,6 @@ export const CartDrawerProvider = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [wishedProducts, setWishedProducts] = useState([]);
 
-  console.log(wishedProducts); 
-
   const showCart = () => {
     setOpen(true);
   }
@@ -28,12 +26,18 @@ export const CartDrawerProvider = ({ children }) => {
     });
   }
 
-  const addProducts = (products) => {
-    
-    const productsWithQty = products.map(p => ({ ...p, cantidad: 0 }));
+const addProducts = (products) => {
 
-    setWishedProducts(productsWithQty);
-  }
+  setWishedProducts(prev => {
+    // Mantén los productos del carrito (cantidad > 0)
+    const carrito = prev.filter(p => p.cantidad > 0);
+    // Agrega los nuevos productos de la página actual, solo si no están ya en el carrito
+    const nuevos = products
+      .filter(apiProd => !carrito.some(c => c.id === apiProd.id))
+      .map(p => ({ ...p, cantidad: 0 }));
+    return [...carrito, ...nuevos];
+  });
+};
 
   const filterProducts = (searchText) => {
     const filtered = wishedProducts.filter(product => product.title.toLowerCase().includes(searchText.toLowerCase()));

@@ -2,28 +2,40 @@ import Carousel from "../../components/carousel/Carousel";
 import './Home.css'
 import {Button, TextField} from "@mui/material";
 import {useEffect, useState} from "react";
-import { getProductsSlowly} from "../../api/api";
 import {Spinner} from "react-bootstrap";
 import ShoppingCartDrawer from "../../components/cartDrawer/ShoppingCartDrawer";
 import { useCartDrawerContext } from "../../store/CartContext";
+import {getProducts} from "../../api/api"; 
 
 const Home = () => {
   const [searchText, setSearchText] = useState("");
   const {wishedProducts, addProducts, filterProducts} = useCartDrawerContext();
+  const [pageNumber, setPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);  
+  const [pageSize, setPageSize] = useState(0); 
+  const [currentPageProducts, setCurrentPageProducts] = useState([]);
+
+  const handlePageNumberChange = (newPageNumber) => {
+    setPageNumber(newPageNumber);
+  }
+
   useEffect(() => {
-    if(!wishedProducts.length) {
       cargarProductos()
-    }
-  }, [])
-
-
-  const filtrarProductos = (searchText) => {
-    filterProducts(searchText);
-    }
+  }, [pageNumber])
 
   const cargarProductos = async () => {
-    const products = await getProductsSlowly();
-    addProducts(products); 
+    try{
+      const data = await getProducts(pageNumber);
+      
+      const productsWithCantidad = data.products.map(p => ({ ...p, cantidad: 0 }));
+
+      setCurrentPageProducts(productsWithCantidad);
+      setTotalPages(data.totalPages); 
+      setPageSize(data.pageSize); 
+      console.log(data)
+    } catch (error) {
+      console.error("Error loading products:", error);
+    }
   }
 
 
@@ -41,13 +53,12 @@ const Home = () => {
           variant="standard"
           placeholder="Buscar por nombre"
         />
-        <Button variant="outlined" onClick={() => filtrarProductos(searchText)}>Buscar</Button>
+        <Button variant="outlined" onClick={() => filterProducts(searchText)}>Buscar</Button>
       </div>
-      {!wishedProducts.length ? <div className="spinner">
+      {!currentPageProducts.length ? <div className="spinner">
           <Spinner/>
         </div> :
-        <Carousel/>
-        
+        <Carousel currentPageProducts = {currentPageProducts} pageNumber = {pageNumber} handlePageNumberChange={handlePageNumberChange} totalPages={totalPages} pageSize={pageSize}/>
       }
      <ShoppingCartDrawer></ShoppingCartDrawer>
     </div>

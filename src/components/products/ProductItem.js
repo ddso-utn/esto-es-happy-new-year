@@ -4,15 +4,25 @@ import {Button, ButtonGroup, Card} from "@mui/material";
 
 const ProductItem = ({ aProduct }) => {
 
-  const {addProductWithAmount} = useCartDrawerContext(); 
+  const {addProductWithAmount, wishedProducts} = useCartDrawerContext(); 
+  
+  const cartProduct = wishedProducts.find(p => p.id === aProduct.id);
 
   const decrementar = () => {
-    addProductWithAmount(aProduct, -1);
+    if(cartProduct) {
+      addProductWithAmount(cartProduct, -1);
+    }
+    else {
+    }
   }
 
   const incrementar = () => {
-    addProductWithAmount(aProduct, 1);
-  }
+ if(cartProduct) {
+      addProductWithAmount(cartProduct, 1);
+    }
+    else {
+      addProductWithAmount(aProduct, 1);
+    }  }
 
     return (
         <Card className="product-item">
@@ -26,7 +36,7 @@ const ProductItem = ({ aProduct }) => {
             <div className="item-footer-actions">
               <ButtonGroup variant="contained" aria-label="Basic button group">
                 <Button onClick={decrementar}>-</Button>
-                <div className="item-footer-counter">{aProduct.cantidad}</div>
+                <div className="item-footer-counter">{cartProduct ? cartProduct.cantidad : 0}</div>
                 <Button onClick={incrementar}>+</Button>
               </ButtonGroup>
             </div>

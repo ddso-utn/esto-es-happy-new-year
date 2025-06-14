@@ -1,9 +1,16 @@
-import {products} from "../mockData/products";
+import axios from "axios";
 
-export const getProducts = () => Promise.resolve(products)
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
-export const getProductsSlowly = () => new Promise((resolve) => {
-  setTimeout(() => {
-    resolve(products)
-  }, 5000)
-})
+export const getProducts = async (pageNumber) => {
+  console.log(pageNumber); 
+  try {
+    const response = await axios.get(`${API_BASE_URL}/products`, {
+      params: { pageNumber: pageNumber }
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error;
+  }
+};

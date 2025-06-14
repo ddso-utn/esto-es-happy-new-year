@@ -1,39 +1,26 @@
-import React, { useState } from 'react';
 import './Carousel.css';
 import ProductItem from '../products/ProductItem';
-import { useCartDrawerContext } from '../../store/CartContext';
 
-const ITEMS_PER_PAGE = 4; // Number of products to show at once
 
-const Carousel = () => {
-  const { wishedProducts } = useCartDrawerContext();
-  const [page, setPage] = useState(0);
+const Carousel = ({ currentPageProducts, pageNumber, totalPages, handlePageNumberChange}) => {
 
-  const totalPages = Math.ceil(wishedProducts.length / ITEMS_PER_PAGE);
 
-  const handlePrev = () => setPage(prev => Math.max(prev - 1, 0));
-  const handleNext = () => setPage(prev => Math.min(prev + 1, totalPages - 1));
-
-  const start = page * ITEMS_PER_PAGE;
-  const end = start + ITEMS_PER_PAGE;
-  const productsToShow = wishedProducts.slice(start, end);
+const handlePrev = () => handlePageNumberChange(Math.max(pageNumber - 1, 1));
+const handleNext = () => handlePageNumberChange(Math.min(pageNumber + 1, totalPages));
 
   return (
     <div>
       <div className="carousel">
-        <button className="carousel-arrow" onClick={handlePrev} disabled={page === 0}>
+        <button className="carousel-arrow" onClick={handlePrev} disabled={pageNumber === 1}>
           &#8592;
         </button>
-        {productsToShow.map(product => (
+        {currentPageProducts.map(product => (
           <ProductItem aProduct={product} key={product.id} />
         ))}
-        <button className="carousel-arrow" onClick={handleNext} disabled={page === totalPages - 1}>
+        <button className="carousel-arrow" onClick={handleNext} disabled={pageNumber === totalPages}>
           &#8594;
         </button>
-      </div>
-      <div className="carousel-pagination">
-        <span>{page + 1} / {totalPages}</span>
-      </div>
+      </div> 
     </div>
   );
 };
