@@ -39,13 +39,9 @@ const addProducts = (products) => {
   });
 };
 
-  const filterProducts = (searchText) => {
-    const filtered = wishedProducts.filter(product => product.title.toLowerCase().includes(searchText.toLowerCase()));
-    setWishedProducts(filtered);
-  }
 
   return (
-    <CartDrawerContext.Provider value={{ open, showCart, hideCart, wishedProducts, addProductWithAmount, addProducts, filterProducts}}>
+    <CartDrawerContext.Provider value={{ open, showCart, hideCart, wishedProducts, addProductWithAmount, addProducts}}>
       {children}
     </CartDrawerContext.Provider>
   );

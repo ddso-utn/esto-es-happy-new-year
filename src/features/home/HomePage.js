@@ -4,24 +4,33 @@ import {Button, TextField} from "@mui/material";
 import {useEffect, useState} from "react";
 import {Spinner} from "react-bootstrap";
 import ShoppingCartDrawer from "../../components/cartDrawer/ShoppingCartDrawer";
-import { useCartDrawerContext } from "../../store/CartContext";
 import {getProducts} from "../../api/api"; 
 
 const Home = () => {
   const [searchText, setSearchText] = useState("");
-  const {wishedProducts, addProducts, filterProducts} = useCartDrawerContext();
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);  
   const [pageSize, setPageSize] = useState(0); 
   const [currentPageProducts, setCurrentPageProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   const handlePageNumberChange = (newPageNumber) => {
     setPageNumber(newPageNumber);
   }
 
+  const handleSearch = () => {
+    console.log("On handleSearch", searchText);
+    setFilteredProducts(searchText !== "" ? currentPageProducts.filter(product => product.title.toLowerCase().includes(searchText.toLowerCase())) : currentPageProducts);
+  }
+
   useEffect(() => {
-      cargarProductos()
+      cargarProductos();
   }, [pageNumber])
+
+  useEffect(() => {
+    console.log("On handleSearch");
+    handleSearch();
+  }, [currentPageProducts]);
 
   const cargarProductos = async () => {
     try{
@@ -53,12 +62,12 @@ const Home = () => {
           variant="standard"
           placeholder="Buscar por nombre"
         />
-        <Button variant="outlined" onClick={() => filterProducts(searchText)}>Buscar</Button>
+        <Button variant="outlined" onClick={handleSearch}>Buscar</Button>
       </div>
       {!currentPageProducts.length ? <div className="spinner">
           <Spinner/>
         </div> :
-        <Carousel currentPageProducts = {currentPageProducts} pageNumber = {pageNumber} handlePageNumberChange={handlePageNumberChange} totalPages={totalPages} pageSize={pageSize}/>
+        <Carousel currentPageProducts = {filteredProducts} pageNumber = {pageNumber} handlePageNumberChange={handlePageNumberChange} totalPages={totalPages} pageSize={pageSize}/>
       }
      <ShoppingCartDrawer></ShoppingCartDrawer>
     </div>
