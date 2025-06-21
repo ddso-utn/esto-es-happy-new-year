@@ -19,7 +19,6 @@ const Home = () => {
   }
 
   const handleSearch = () => {
-    console.log("On handleSearch", searchText);
     setFilteredProducts(searchText !== "" ? currentPageProducts.filter(product => product.title.toLowerCase().includes(searchText.toLowerCase())) : currentPageProducts);
   }
 
@@ -28,7 +27,6 @@ const Home = () => {
   }, [pageNumber])
 
   useEffect(() => {
-    console.log("On handleSearch");
     handleSearch();
   }, [currentPageProducts]);
 
