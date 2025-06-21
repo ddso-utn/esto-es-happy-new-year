@@ -7,6 +7,7 @@ import ProductDetailPage from './features/products/ProductDetail';
 import {createTheme, ThemeProvider} from "@mui/material";
 import Checkout from "./features/checkout/Checkout";
 import { CartDrawerProvider } from './store/CartContext';
+import Dashboard from './features/dashboard/Dashboard';
 
 const theme = createTheme({
   palette: {
@@ -26,6 +27,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="/products/:title" element={<ProductDetailPage />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/dashboard" element = {<Dashboard  />} />
           </Route>
         </Routes>
       </BrowserRouter>
